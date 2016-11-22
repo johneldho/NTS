@@ -5,17 +5,17 @@
 #
 FROM node:latest
 
-RUN mkdir -p /quickstart /home/nodejs && \
+RUN mkdir -p /NTS /home/nodejs && \
     groupadd -r nodejs && \
     useradd -r -g nodejs -d /home/nodejs -s /sbin/nologin nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
-WORKDIR /quickstart
-COPY package.json /quickstart/
+WORKDIR /NTS
+COPY package.json /NTS/
 RUN npm install --unsafe-perm=true
 
-COPY . /quickstart
-RUN chown -R nodejs:nodejs /quickstart
+COPY . /NTS
+RUN chown -R nodejs:nodejs /NTS
 USER nodejs
 
 CMD npm start
